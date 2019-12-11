@@ -54,12 +54,8 @@ trouble_shooting    프로젝트를 진행하며 발생한 문제사항들 정�
   - 기존의 비슷한 아이디어의 문제점
   - 오픈소스 SW에 관한 지식
   - 아이디어가 어플로서 구현되기 위한 다양한 조건(ex- 구현순서, 구현 방법 등) 
-  - 기존에 존재하는 주차공간 확인 시스템에 이용되는 다양한 센서들 그리고 그들의 구동방식
-  - 
-  - [Django](https://github.com/BJ-Lim/Frameworks/blob/master/Django.md)에 대한 기본 사용 방법
-    - 이 프로젝트는 Django로 작성되었습니다.
-  - [Docker](https://github.com/BJ-Lim/Frameworks/blob/master/Docker.md)(선택)
-    - 이 프로젝트는 Docker 제공을 목표로 했지만, 아직 Docker는 제공하지 않습니다.
+  - 기존에 존재하는 주차공간 확인 시스템에 이용되는 다양한 센서의 종류
+  - 센서들의 작동원리 구현 방법에 대한 것
 
 ## 핵심 문서
 문서명 | 설명
