@@ -51,9 +51,11 @@ trouble_shooting    프로젝트를 진행하며 발생한 문제사항들 정�
 
 ## 사전 지식
 - 이 아이디어에 대하여 보다 쉽게 그리고 깊이있는 이해를 하기 위해서는 다음과 같은 사전지식이 있으면 도움이 될 것입니다.
-  - 리눅스에 대한 기초 지식
-  - 파이썬 문법
-  - 데이터베이스
+  - 기존의 비슷한 아이디어의 문제점
+  - 오픈소스 SW에 관한 지식
+  - 아이디어가 어플로서 구현되기 위한 다양한 조건(ex- 구현순서, 구현 방법 등) 
+  - 기존에 존재하는 주차공간 확인 시스템에 이용되는 다양한 센서들 그리고 그들의 구동방식
+  - 
   - [Django](https://github.com/BJ-Lim/Frameworks/blob/master/Django.md)에 대한 기본 사용 방법
     - 이 프로젝트는 Django로 작성되었습니다.
   - [Docker](https://github.com/BJ-Lim/Frameworks/blob/master/Docker.md)(선택)
