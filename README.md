@@ -50,7 +50,7 @@ trouble_shooting    프로젝트를 진행하며 발생한 문제사항들 정�
 - 이 문서는 [Document](https://github.com/BJ-Lim/Capstone_Design/tree/master/docs)와 동일한 내용입니다.
 
 ## 사전 지식
-- 이 아이디어에 대하여 보다 쉽게 그리고 깊이있는 이해를 하기 위해서는 다음과 같은 사전지식이 있으면 도움이 될 것입니다.
+- 이 아이디어에 대하여 보다 쉽게 이해를 하기 위해서는 다음과 같은 사전지식이 있으면 도움이 될 것입니다.
   - 기존의 비슷한 아이디어의 문제점
   - 오픈소스 SW에 관한 지식
   - 아이디어가 어플로서 구현되기 위한 다양한 조건(ex- 구현순서, 구현 방법 등) 
@@ -76,33 +76,15 @@ trouble_shooting    프로젝트를 진행하며 발생한 문제사항들 정�
 [MariaDB 기본 명령어](https://github.com/BJ-Lim/Capstone_Design/blob/master/database/db_command.md) | 마리아 DB의 기본 명령어 및 설치법
 
 ## 개선 해야할 점
-- DB 모델의 중복성 제거
-  - [Models.py](https://github.com/BJ-Lim/Capstone_Design/blob/master/src/Django/scode/judge/models.py)에는 코드 중복이 많습니다. 상속을 이용하면 이 중복성을 제거할 수 있을 것 같습니다.
-- admin 작성
-  - Admin이 작성되면 학생과 교수를 관리하는 관리자 권한의 레벨을 새로 만들어, 서버 관리자가 더 쉽게 관리하도록 만들 수 있습니다.
+- 해당 아이디어를 어플로 구현하고 실행을 하는데 오류를 줄여나가기 위한 구체적 방안을 구상.
+  - 현재 존재하는 어플의 기능에서 나아가 구체적인 기능들을 추가한 만큼 추가한 부분으로 인해 오류가 생기지 않도록 적절한 방안을 구상하면 사용자가 사용하는데 있어서 편의성 뿐만 아니라 안정성도 보다 강화 될 것 입니다.
+- 해당 아이디어를 구현하는데 있어서 현존하는 다른 다양한 오픈소스SW에 대한 조사.
+  - 단순히 어느 한 오픈소스SW를 이용하기 보다는 이에 적합한 다양한 것들에 대하여 조사하고 적용함으로써 보다 심도있고 구체저긴 구현이 가능 할 것입니다.
 - 언어 설정
-  - 현재는 교수가 과목의 언어를 설정할 수 없습니다. 언어 및 과목에 대한 설정이 가능한 페이지를 하나 만들면 효율적으로 과목을 관리할 수 있습니다.
-- Docker
-  - 현재는 VM 기준으로 모든 문서들이 작성되었습니다. Docker 이미지를 제공하려 했지만, 다음과 같은 사항이 문제가 있었습니다.
-    - Docker의 컨테이너는 호스트에 깔려있는 언어를 사용하고, 채점합니다. 따라서 컨테이너는 자동화 하여 생성할 수 있지만, 호스트에 언어는 별도로 설치해야 했습니다. 따라서 아직 Docker를 제공하지 않고, VM을 기준으로 하여 모든 설치 자동화 방법을 [여기](https://github.com/BJ-Lim/Capstone_Design/blob/master/docs/install.md)에서 제공합니다.
-- 미구현 페이지
-  - [professor_assignment_update.html](https://github.com/BJ-Lim/Capstone_Design/blob/master/src/Django/scode/judge/templates/judge/professor/professor_assignment_update.html) : 과제를 수정하는 페이지 입니다.
-  - [professor_assignment_delete.html](https://github.com/BJ-Lim/Capstone_Design/blob/master/src/Django/scode/judge/templates/judge/professor/professor_assignment_delete.html) : 과제를 삭제하는 페이지 입니다.
-  - [professor_subject_settings.html](https://github.com/BJ-Lim/Capstone_Design/blob/master/src/Django/scode/judge/templates/judge/professor/professor_subject_settings.html) : 과목에 대한 설정을 하는 페이지입니다. 
-  - [professor_result_list.html](https://github.com/BJ-Lim/Capstone_Design/blob/master/src/Django/scode/judge/templates/judge/professor/professor_result_list.html) : 과제 제출 내역을 볼 수 있는 페이지입니다. 학생의 스코어 확인은 물론 제출된 과제 소스파일도 다운로드 가능해야 합니다.
-- 미구현 기능
-  - 통계 기능 : 데이터베이스에 대부분의 필드는 있습니다. 약간의 로직을 추가하면, 이 기능은 쉽게 구현될 것입니다.
-  - git 자동관리 : 과제 제출시 아직 자동으로 git에 업로드 하지 않습니다. 하지만 이 기능을 사용하려면 비밀번호를 어떻게 저장할 것인지를 생각해 봐야 합니다. 원문으로 저장한다면 보안에 취약하고, SHA256 등의 해쉬를 이용한다면 git에 로그인하는데 어려움이 있을 수 있습니다. 따라서 이 방법을 찾아봐야 합니다. 
-- 성능을 향상시키기 위한 방법
-  - 현재는 Dmoj-cli가 필요할때 마다 호출되는 on demand 형식입니다. 문제는 dmoj-cli가 처음 실행되면 self-test를 거치는데, 채점할 때 마다 self-test를 하는 것은 몹시 비효율적인 방법입니다. 따라서 dmoj-cli는 데몬으로 돌아가고, input과 output을 리다이렉트 하는 형식으로 사용된다면 서버의 오버헤드가 감소할 것입니다. 다른 방법으로는, Dmoj의 인터페이스를 사용하는 방법입니다. dmoj-cli는 테스트에 적합한 구조이고, dmoj는 서버 운용에 적합한 구조입니다. 하지만 그 인터페이스가 문서화 되지 않았다는 단점이 있습니다. 채점기로 Dmoj를 사용한다면 성능의 향상을 꾀할 수 있을 것입니다.
-- 로그인 기능에 관하여
-  - 현재 로그인 방법은 Django에서 제공하는 기능을 사용하지 않습니다. 마찬가지로 Mixin 기능도 사용하지 않으며, 페이지별로 권한을 체크하지 않아 보안상 취약점이 존재합니다. 따라서 이 기능을 개선하여 Django에서 제공하는 로그인 기능을 사용하고, Mixin 기능을 사용하여 보안을 향상시킬 수 있습니다.
+  - 현재 아이디어에서는 언어를 설정할 수 있는 방법이 없습니다. 언어 설정이 가능한 기능을 구현한다면 어플을 사용하는 사용자 폭이 더 넓어질 것입니다.
+- 물품위치 정보 시스템을 구현하기 위한 도구
+  - 물품위치 정보 시스템을 구현하기 위해서 wi-fi 나 비콘 등에 대하여 생각을 해보았는데 이밖에도 오류의 빈도가 더 적고 구현이 쉬운 것을 구현하면 보다 완성도가 높은 시스템이 될 것 입니다.
 - 디자인
-  - 현재는 기능 중심의 사이트를 만들기 바빴습니다. 디자인적인 요소가 추가된다면 훨씬 좋은 프로젝트가 될 것입니다.
-- 문서화
-  - DB의 일부 문서가 아직 문서화 되지 않았습니다. 최신 DB의 스키마 정보는 [models.py](https://github.com/BJ-Lim/Capstone_Design/blob/master/src/Django/scode/judge/models.py)에서 확인 가능합니다.
-- 코드의 템플릿 제공
-  - 사실 이 문제는 judge에서 매우 중요한 부분입니다. judge를 처음 사용하는 학생은 입력, 출력을 어떻게 하는지, 클래스명을 어떻게 정의해야 하는지 혼란스러울 수 있기 때문에 기본적으로 해당 언어에 대한 템플릿을 제공해야 합니다.
-- 채점의 결과 제공
-  - 현재는 테스트케이스 중 맞은 갯수만을 스코어로 취합니다. 틀린 경우 그에 맞는 오류를 학생에게 제공해 주어야 합니다.
-
+  - 현재는 어플의 대략적인 디자인 요소들에 대해서만 간단히 구현을 하였는데 차후에 완성된 어플에는 디자인 요소들에게 있어서도 작은 부분까지 디테일을 살려 완성도를 높일 것 입니다. 
+- 보안기능
+  - 현재는 아이디어에 대해서만 간략히 설명 하였기 때문에 어플의 보안에 대해서는 구체적인 구현 방식에 대하여 생각해보지 않았지만 이 또한 차후에 완성 어플에서는 구체적으로 구현함으로써 어플의 보안 안정성을 높일 것 입니다.
